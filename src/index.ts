@@ -6,6 +6,8 @@ import express from 'express'
 import { DB } from './config/db.config'
 import routes from './routes/index'
 import { errorMiddleware } from './util/exception'
+import swaggerUi from 'swagger-ui-express'
+import { specs } from './config/swagger.config'
 
 async function main() {
   const app = express()
@@ -20,6 +22,8 @@ async function main() {
   //Check connect DB and create table
   await DB.raw('select 1+1 as result')
   await DB.migrate.latest()
+
+  app.use('/docs', swaggerUi.serve, swaggerUi.setup(specs));
 
   app.listen(port, () => console.log(`Server start at port ${port}`))
 }
