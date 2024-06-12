@@ -34,9 +34,6 @@ authRoute.post(
   refreshToken
 )
 
-authRoute.post(
-  '/sign-out',
-  signOut
-)
+authRoute.post('/sign-out', signOut)
 
 export default authRoute
