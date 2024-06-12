@@ -25,7 +25,7 @@ async function main() {
 
   app.use('/docs', swaggerUi.serve, swaggerUi.setup(specs));
 
-  app.listen(port, () => console.log(`Server start at port ${port}`))
+  app.listen(port, () => console.log(`Server start at port ${port}\nDocs in: http://localhost:${port}/docs`))
 }
 
 main()
